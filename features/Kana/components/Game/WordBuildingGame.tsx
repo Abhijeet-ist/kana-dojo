@@ -61,6 +61,35 @@ const tileEntryVariants = {
   }
 };
 
+// Celebration bounce animation for correct answers - Duolingo-style sequential jump
+const celebrationContainerVariants = {
+  idle: {},
+  celebrate: {
+    transition: {
+      staggerChildren: 0.18,
+      delayChildren: 0.08
+    }
+  }
+};
+
+const celebrationBounceVariants = {
+  idle: {
+    y: 0,
+    scaleX: 1,
+    scaleY: 1
+  },
+  celebrate: {
+    y: [0, -32, -35, 0, -10, 0],
+    scaleX: [1, 0.94, 0.96, 1.06, 0.98, 1],
+    scaleY: [1, 1.08, 1.04, 0.92, 1.02, 1],
+    transition: {
+      duration: 1,
+      ease: [0.16, 1, 0.3, 1] as [number, number, number, number],
+      times: [0, 0.25, 0.35, 0.6, 0.8, 1]
+    }
+  }
+};
+
 // Helper function to determine if a kana character is hiragana or katakana
 const isHiragana = (char: string): boolean => {
   const code = char.charCodeAt(0);
@@ -276,12 +305,14 @@ const WordBuildingGame = ({
   const [wordData, setWordData] = useState(() => generateWord());
   const [placedTiles, setPlacedTiles] = useState<string[]>([]);
   const [isChecking, setIsChecking] = useState(false);
+  const [isCelebrating, setIsCelebrating] = useState(false);
 
   const resetGame = useCallback(() => {
     const newWord = generateWord();
     setWordData(newWord);
     setPlacedTiles([]);
     setIsChecking(false);
+    setIsCelebrating(false);
     setBottomBarState('check');
     // Start timing for the new question
     speedStopwatch.reset();
@@ -357,6 +388,7 @@ const WordBuildingGame = ({
       incrementCorrectAnswers();
       setScore(score + wordData.wordChars.length);
       setBottomBarState('correct');
+      setIsCelebrating(true);
 
       // Advance smart reverse mode if not externally controlled
       if (externalIsReverse === undefined) {
@@ -489,18 +521,28 @@ const WordBuildingGame = ({
       {/* Answer Row Area */}
       <div className='flex w-full flex-col items-center'>
         <div className='flex min-h-[5rem] w-full items-center border-b border-[var(--border-color)] px-2 pb-2 md:w-3/4 lg:w-2/3 xl:w-1/2'>
-          <div className='flex flex-row flex-wrap justify-start gap-3'>
+          <motion.div
+            className='flex flex-row flex-wrap justify-start gap-3'
+            variants={celebrationContainerVariants}
+            initial='idle'
+            animate={isCelebrating ? 'celebrate' : 'idle'}
+          >
             {/* Render placed tiles in the answer row */}
             {placedTiles.map(char => (
-              <ActiveTile
-                key={`tile-${char}`}
-                id={`tile-${char}`}
-                char={char}
-                onClick={() => handleTileClick(char)}
-                isDisabled={isChecking}
-              />
+              <motion.div
+                key={`answer-tile-${char}`}
+                variants={celebrationBounceVariants}
+                style={{ originY: 1 }}
+              >
+                <ActiveTile
+                  id={`tile-${char}`}
+                  char={char}
+                  onClick={() => handleTileClick(char)}
+                  isDisabled={isChecking}
+                />
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </div>
 
