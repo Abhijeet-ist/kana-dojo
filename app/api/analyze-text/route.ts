@@ -1,4 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
+import {
+  getAnalyzeRateLimiter,
+  getClientIP,
+  createRateLimitHeaders
+} from '@/shared/lib/rateLimit';
 
 // Type for kuromoji token
 interface KuromojiToken {
@@ -133,6 +138,34 @@ function getPOSDetail(token: KuromojiToken): string {
  * Analyzes Japanese text using Kuromoji to extract word-by-word information
  */
 export async function POST(request: NextRequest) {
+  // Rate limiting check - protect against abuse
+  const clientIP = getClientIP(request);
+  const rateLimiter = getAnalyzeRateLimiter();
+  const rateLimitResult = rateLimiter.check(clientIP);
+
+  if (!rateLimitResult.allowed) {
+    const headers = createRateLimitHeaders(rateLimitResult);
+
+    let message: string;
+    if (rateLimitResult.reason === 'daily_quota') {
+      message = 'Daily analysis limit reached. Please try again tomorrow.';
+    } else if (rateLimitResult.reason === 'global_limit') {
+      message =
+        'Service is experiencing high demand. Please try again in a moment.';
+    } else {
+      message = `Too many requests. Please wait ${rateLimitResult.retryAfter} seconds.`;
+    }
+
+    return NextResponse.json(
+      {
+        error: message,
+        code: 'RATE_LIMIT',
+        retryAfter: rateLimitResult.retryAfter
+      },
+      { status: 429, headers }
+    );
+  }
+
   try {
     const body = await request.json();
     const { text } = body as { text: string };
@@ -155,7 +188,15 @@ export async function POST(request: NextRequest) {
     // Check cache
     const cached = analysisCache.get(text);
     if (cached && Date.now() - cached.timestamp < CACHE_TTL) {
-      return NextResponse.json({ tokens: cached.tokens, cached: true });
+      const rateLimitHeaders = createRateLimitHeaders(rateLimitResult);
+      const response = NextResponse.json({
+        tokens: cached.tokens,
+        cached: true
+      });
+      rateLimitHeaders.forEach((value, key) => {
+        response.headers.set(key, value);
+      });
+      return response;
     }
 
     // Get kuroshiro instance with kuromoji
@@ -180,7 +221,12 @@ export async function POST(request: NextRequest) {
     });
     cleanupCache();
 
-    return NextResponse.json({ tokens: analyzedTokens });
+    const rateLimitHeaders = createRateLimitHeaders(rateLimitResult);
+    const response = NextResponse.json({ tokens: analyzedTokens });
+    rateLimitHeaders.forEach((value, key) => {
+      response.headers.set(key, value);
+    });
+    return response;
   } catch (error) {
     console.error('Text analysis error:', error);
     return NextResponse.json(
