@@ -340,7 +340,11 @@ const Sidebar = () => {
   useEffect(() => {
     // Dynamically import experiments data
     import('@/shared/data/experiments').then(module => {
-      setLoadedExperiments(module.experiments);
+      // Shuffle experiments randomly
+      const shuffledExperiments = [...module.experiments].sort(
+        () => Math.random() - 0.5,
+      );
+      setLoadedExperiments(shuffledExperiments);
     });
   }, []);
 
