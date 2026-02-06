@@ -299,12 +299,16 @@ export default function Gauntlet<T>({ config, onCancel }: GauntletProps<T>) {
       actualCorrectAnswers,
       actualWrongAnswers,
       actualQuestionsCompleted,
+      actualBestStreak,
+      actualCurrentStreak,
     }: {
       completed: boolean;
       actualLives: number;
       actualCorrectAnswers: number;
       actualWrongAnswers: number;
       actualQuestionsCompleted: number;
+      actualBestStreak: number;
+      actualCurrentStreak: number;
     }) => {
       const totalTimeMs = Date.now() - startTime;
       const validAnswerTimes = answerTimes.filter(t => t > 0);
@@ -322,8 +326,8 @@ export default function Gauntlet<T>({ config, onCancel }: GauntletProps<T>) {
             ? actualCorrectAnswers /
               (actualCorrectAnswers + actualWrongAnswers)
             : 0,
-        bestStreak,
-        currentStreak,
+        bestStreak: actualBestStreak,
+        currentStreak: actualCurrentStreak,
         startingLives: maxLives,
         livesRemaining: actualLives,
         livesLost: maxLives - actualLives + livesRegenerated,
@@ -361,7 +365,7 @@ export default function Gauntlet<T>({ config, onCancel }: GauntletProps<T>) {
         isPerfect,
         livesLost,
         livesRegenerated,
-        bestStreak,
+        bestStreak: actualBestStreak,
       });
 
       setPhase('results');
@@ -373,8 +377,6 @@ export default function Gauntlet<T>({ config, onCancel }: GauntletProps<T>) {
       difficulty,
       gameMode,
       totalQuestions,
-      bestStreak,
-      currentStreak,
       maxLives,
       livesRegenerated,
       characterStats,
@@ -404,6 +406,8 @@ export default function Gauntlet<T>({ config, onCancel }: GauntletProps<T>) {
       newCorrectAnswers: number,
       newWrongAnswers: number,
       questionsCompleted: number,
+      newBestStreak: number,
+      newCurrentStreak: number,
     ) => {
       setUserAnswer('');
       setWrongSelectedAnswers([]);
@@ -416,6 +420,8 @@ export default function Gauntlet<T>({ config, onCancel }: GauntletProps<T>) {
           actualCorrectAnswers: newCorrectAnswers,
           actualWrongAnswers: newWrongAnswers,
           actualQuestionsCompleted: questionsCompleted,
+          actualBestStreak: newBestStreak,
+          actualCurrentStreak: newCurrentStreak,
         });
         return;
       }
@@ -429,6 +435,8 @@ export default function Gauntlet<T>({ config, onCancel }: GauntletProps<T>) {
             actualCorrectAnswers: newCorrectAnswers,
             actualWrongAnswers: newWrongAnswers,
             actualQuestionsCompleted: questionsCompleted,
+            actualBestStreak: newBestStreak,
+            actualCurrentStreak: newCurrentStreak,
           });
           return;
         }
@@ -475,14 +483,13 @@ export default function Gauntlet<T>({ config, onCancel }: GauntletProps<T>) {
         playCorrect();
         setLastAnswerCorrect(true);
 
+        // Compute new streak values inline to avoid stale closure in endGame
+        const newCurrentStreak = currentStreak + 1;
+        const newBestStreak = Math.max(bestStreak, newCurrentStreak);
+
         setCorrectAnswers(prev => prev + 1);
-        setCurrentStreak(prev => {
-          const newStreak = prev + 1;
-          if (newStreak > bestStreak) {
-            setBestStreak(newStreak);
-          }
-          return newStreak;
-        });
+        setCurrentStreak(newCurrentStreak);
+        setBestStreak(newBestStreak);
 
         const charId = getItemId(currentQuestion.item);
         setCharacterStats(prev => ({
@@ -510,7 +517,7 @@ export default function Gauntlet<T>({ config, onCancel }: GauntletProps<T>) {
           }
         }
 
-        advanceToNextQuestion(lives, true, newCorrectAnswers, wrongAnswers, questionsCompleted);
+        advanceToNextQuestion(lives, true, newCorrectAnswers, wrongAnswers, questionsCompleted, newBestStreak, newCurrentStreak);
         return;
       }
 
@@ -536,7 +543,8 @@ export default function Gauntlet<T>({ config, onCancel }: GauntletProps<T>) {
       setLifeJustLost(true);
       setTimeout(() => setLifeJustLost(false), 500);
 
-      advanceToNextQuestion(newLives, false, correctAnswers, newWrongAnswers, questionsCompletedOnWrong);
+      // On wrong answer, streak resets to 0 — bestStreak stays the same
+      advanceToNextQuestion(newLives, false, correctAnswers, newWrongAnswers, questionsCompletedOnWrong, bestStreak, 0);
     },
     [
       advanceToNextQuestion,
@@ -545,6 +553,7 @@ export default function Gauntlet<T>({ config, onCancel }: GauntletProps<T>) {
       correctSinceLastRegen,
       currentIndex,
       currentQuestion,
+      currentStreak,
       difficulty,
       getItemId,
       lives,
