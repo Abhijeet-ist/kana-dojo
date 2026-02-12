@@ -42,17 +42,17 @@
   {
     "id": 9,
     "text": "\"〜そうです\" can report hearsay (\"I heard that...\").",
-    "completed": false
+    "completed": true
   },
   {
     "id": 10,
     "text": "\"〜ようです\" means \"it seems like\" and is based on observation.",
-    "completed": false
+    "completed": true
   },
   {
     "id": 11,
     "text": "\"〜でしょう\" adds probability or softens statements, like \"probably\".",
-    "issued": false
+    "issued": true
   },
   {
     "id": 12,
