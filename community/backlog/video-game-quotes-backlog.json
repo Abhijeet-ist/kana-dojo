@@ -236,7 +236,7 @@
     "english": "Come at me for real.",
     "game": "Final Fantasy X",
     "character": "Tidus",
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -336,7 +336,7 @@
     "english": "This is my answer.",
     "game": "Final Fantasy X",
     "character": "Auron",
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -366,7 +366,7 @@
     "english": "I will never give up.",
     "game": "Final Fantasy X",
     "character": "Auron",
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -506,7 +506,7 @@
     "english": "Let's settle this!",
     "game": "Kingdom Hearts",
     "character": "Sora",
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -606,7 +606,7 @@
     "english": "I protect my friends.",
     "game": "Kingdom Hearts",
     "character": "Sora",
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -826,7 +826,7 @@
     "english": "The real battle starts now.",
     "game": "Kingdom Hearts",
     "character": "Riku",
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -856,7 +856,7 @@
     "english": "Let's go!",
     "game": "Kingdom Hearts",
     "character": "Riku",
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -1006,7 +1006,7 @@
     "english": "I won't hesitate anymore.",
     "game": "Metal Gear Solid",
     "character": "Solid Snake",
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {

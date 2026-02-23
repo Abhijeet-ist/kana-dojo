@@ -680,20 +680,20 @@
   {
     "id": 114,
     "fact": "Japan has an 'everlasting love' museum in Hokkaido dedicated to sculptor Takeichi Nishimura's 60-year love for his wife.",
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
     "id": 115,
     "fact": "There's a Japanese concept 'mujo' (無常) - impermanence - reminding that nothing lasts, making each moment precious.",
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
     "id": 116,
     "fact": "Japan has themed trains where the entire interior is decorated for specific anime, seasonal events, or tourist destinations.",
     "issued": false,
-    "completed": false
+    "completed": true
   },
   {
     "id": 117,
@@ -729,7 +729,7 @@
     "id": 122,
     "fact": "Japan has 'anti-lonely death' services that check on elderly living alone and arrange their affairs if they pass away.",
     "issued": false,
-    "completed": false
+    "completed": true
   },
   {
     "id": 123,
@@ -741,12 +741,12 @@
     "id": 124,
     "fact": "Japan has 'Peko-chan' - a cartoon mascot for Fujiya confectionery since 1950, whose tongue-sticking pose has become an iconic symbol recognized by nearly all Japanese people.",
     "issued": false,
-    "completed": false
+    "completed": true
   },
   {
     "id": 125,
     "fact": "The word 'yoroshiku' (よろしく) has no direct translation - it's used for introductions, requests, and meaning 'please treat me well'.",
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -891,12 +891,12 @@
     "id": 149,
     "fact": "The word 'shiawase' (幸せ) for happiness originally meant 'what happens' - suggesting happiness is accepting what comes.",
     "issued": false,
-    "completed": false
+    "completed": true
   },
   {
     "id": 150,
     "fact": "Japan has 'gravure idols' - models who pose in bikinis and lingerie for magazines, calendars, and trading cards.",
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -1263,24 +1263,24 @@
     "id": 211,
     "fact": "Japan has regional mascots called 'yuru-chara' (ゆるキャラ) that promote towns, products, and even government agencies.",
     "issued": false,
-    "completed": false
+    "completed": true
   },
   {
     "id": 212,
     "fact": "The Japanese word 'arigatai' (ありがたい) originally meant 'rare and precious', which is why it became associated with gratitude.",
     "issued": false,
-    "completed": false
+    "completed": true
   },
   {
     "id": 213,
     "fact": "Japan has a tradition of exchanging seasonal gifts called 'oseibo' (お歳暮) in December to express thanks.",
     "issued": false,
-    "completed": false
+    "completed": true
   },
   {
     "id": 214,
     "fact": "In many Japanese cities, you can find public 'koban' (交番) — small neighborhood police boxes that help with directions and lost items.",
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -1430,7 +1430,7 @@
   {
     "id": 239,
     "fact": "Japanese rail stations often have melodic 'departure jingles' tailored to the neighborhood, making each station instantly recognizable.",
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -1569,12 +1569,12 @@
     "id": 262,
     "fact": "The term 'yuyake' (夕焼け) means sunset glow, and many schools have songs that reference it as a symbol of going home.",
     "issued": false,
-    "completed": false
+    "completed": true
   },
   {
     "id": 263,
     "fact": "Japan has 'chiiki matsuri' — neighborhood festivals run by local committees where residents carry portable shrines together.",
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -1664,7 +1664,7 @@
   {
     "id": 278,
     "fact": "The word 'mikan' (未完) means incomplete, and it's sometimes used by artists to describe works intentionally left open-ended.",
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {

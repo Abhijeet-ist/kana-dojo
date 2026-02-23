@@ -470,7 +470,7 @@
   {
     "id": 79,
     "text": "\"〜にすぎない\" means \"no more than...\".",
-    "completed": false,
+    "completed": true,
     "issued": false
   },
   {
@@ -488,7 +488,7 @@
   {
     "id": 82,
     "text": "\"〜ばかりか\" means \"not only... but also\".",
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -500,14 +500,14 @@
   {
     "id": 84,
     "text": "\"〜を通して\" means \"through / throughout...\".",
-    "completed": false,
+    "completed": true,
     "issued": false
   },
   {
     "id": 85,
     "text": "\"〜に限って\" means \"only / exclusively\".",
     "issued": false,
-    "completed": false
+    "completed": true
   },
   {
     "id": 86,
@@ -518,7 +518,7 @@
   {
     "id": 87,
     "text": "\"〜ません\" is the polite negative form of verbs, used to say something doesn't happen. (practice variation 2)",
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -536,19 +536,19 @@
   {
     "id": 90,
     "text": "\"〜てはいけません\" means \"must not\" and is used for prohibitions. (practice variation 5)",
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
     "id": 91,
     "text": "\"〜ながら\" connects actions to show two things happening at the same time. (practice variation 6)",
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
     "id": 92,
     "text": "\"〜たことがある\" expresses past experience, like \"have done\" something before. (practice variation 7)",
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -560,13 +560,13 @@
   {
     "id": 94,
     "text": "\"〜そうです\" can report hearsay (\"I heard that...\"). (practice variation 9)",
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
     "id": 95,
     "text": "\"〜ようです\" means \"it seems like\" and is based on observation. (practice variation 10)",
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -578,7 +578,7 @@
   {
     "id": 97,
     "text": "\"〜つもり\" expresses intent, like \"I plan to\" do something. (practice variation 12)",
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {

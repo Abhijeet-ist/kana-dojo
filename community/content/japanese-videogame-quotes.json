@@ -294,17 +294,10 @@
     "character": "Sora"
   },
   {
-    "japanese": "??????",
-    "romaji": "Nakama o mamoru.",
-    "english": "I protect my friends.",
-    "game": "Kingdom Hearts",
-    "character": "Sora"
-  },
-  {
-    "japanese": "????",
-    "romaji": "Ikuzo!",
-    "english": "Let's go!",
-    "game": "Kingdom Hearts",
-    "character": "Riku"
-  }
+  "japanese": "??????",
+  "romaji": "Nakama o mamoru.",
+  "english": "I protect my friends.",
+  "game": "Kingdom Hearts",
+  "character": "Sora"
+},
 ]

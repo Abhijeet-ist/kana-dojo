@@ -1353,7 +1353,9 @@
     "mainColor": "oklch(78.0% 0.135 215.0 / 1)",
     "secondaryColor": "oklch(85.0% 0.155 90.0 / 1)",
     "issued": true,
-    "completed": false
+    "completed": true,
+    "completedBy": "z5005z-hue",
+    "completedPR": 5741
   },
   {
     "id": "cedar-incense",
@@ -1362,7 +1364,7 @@
     "backgroundColor": "oklch(19.0% 0.020 70.0 / 1)",
     "mainColor": "oklch(72.0% 0.095 75.0 / 1)",
     "secondaryColor": "oklch(58.0% 0.065 55.0 / 1)",
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -1392,7 +1394,7 @@
     "backgroundColor": "oklch(14.0% 0.060 300.0 / 1)",
     "mainColor": "oklch(78.0% 0.220 330.0 / 1)",
     "secondaryColor": "oklch(85.0% 0.175 190.0 / 1)",
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -1402,7 +1404,7 @@
     "backgroundColor": "oklch(95.0% 0.012 85.0 / 1)",
     "mainColor": "oklch(60.0% 0.170 40.0 / 1)",
     "secondaryColor": "oklch(72.0% 0.095 120.0 / 1)",
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -1412,8 +1414,10 @@
     "backgroundColor": "oklch(18.0% 0.055 330.0 / 1)",
     "mainColor": "oklch(72.0% 0.195 35.0 / 1)",
     "secondaryColor": "oklch(85.0% 0.095 275.0 / 1)",
-    "issued": false,
-    "completed": false
+    "issued": true,
+    "completed": true,
+    "completedBy": "vraj00222",
+    "completedPR": 5778
   },
   {
     "id": "spring-bamboo",
@@ -1422,8 +1426,10 @@
     "backgroundColor": "oklch(93.0% 0.018 150.0 / 1)",
     "mainColor": "oklch(55.0% 0.145 145.0 / 1)",
     "secondaryColor": "oklch(70.0% 0.085 120.0 / 1)",
-    "issued": false,
-    "completed": false
+    "issued": true,
+    "completed": true,
+    "completedBy": "TiwariLokesh",
+    "completedPR": 5789
   },
   {
     "id": "plum-ink",
@@ -1432,7 +1438,7 @@
     "backgroundColor": "oklch(16.0% 0.030 280.0 / 1)",
     "mainColor": "oklch(72.0% 0.145 330.0 / 1)",
     "secondaryColor": "oklch(60.0% 0.075 260.0 / 1)",
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -1475,7 +1481,7 @@
     "mainColor": "oklch(72.0% 0.115 65.0 / 1)",
     "secondaryColor": "oklch(60.0% 0.085 25.0 / 1)",
     "issued": false,
-    "completed": false
+    "completed": true
   },
   {
     "id": "fuji-shadow",
@@ -1484,7 +1490,7 @@
     "backgroundColor": "oklch(15.0% 0.015 250.0 / 1)",
     "mainColor": "oklch(78.0% 0.035 230.0 / 1)",
     "secondaryColor": "oklch(65.0% 0.105 300.0 / 1)",
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {

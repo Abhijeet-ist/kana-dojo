@@ -46,11 +46,21 @@ const FontCard = memo(function FontCard({
       <p className={clsx('text-center text-xl', fontClassName)}>
         <span
           style={{
-            color: isSelected ? 'var(--main-color)' : 'var(--secondary-color)',
+            color: isSelected ? 'var(--background-color)' : 'var(--main-color)',
           }}
         >
           {fontName}
-          {isDefault && ' (default)'}
+          {isDefault && (
+            <span
+              style={{
+                color: isSelected
+                  ? 'var(--background-color)'
+                  : 'var(--main-color)',
+              }}
+            >
+              {' (default)'}
+            </span>
+          )}
         </span>
         <span
           className='ml-2'
@@ -115,7 +125,7 @@ export default function FontsModal({ open, onOpenChange }: FontsModalProps) {
             {/* Recommended Fonts Section */}
             <div className='mb-6'>
               <div className='mb-3 flex items-center gap-2'>
-                <h3 className='text-lg font-semibold text-(--main-color)'>
+                <h3 className='text-lg font-medium text-(--main-color)'>
                   Recommended
                 </h3>
                 {/* 
@@ -146,7 +156,7 @@ export default function FontsModal({ open, onOpenChange }: FontsModalProps) {
             {/* Other Fonts Section */}
             <div>
               <div className='mb-3 flex items-center gap-2'>
-                <h3 className='text-lg font-semibold text-(--main-color)'>
+                <h3 className='text-lg font-medium text-(--main-color)'>
                   Other
                 </h3>
                 {/* 

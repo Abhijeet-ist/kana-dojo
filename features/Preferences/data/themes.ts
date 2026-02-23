@@ -199,7 +199,9 @@ function buildThemeGroup(baseGroup: {
   return {
     name: baseGroup.name,
     icon: baseGroup.icon,
-    themes: baseGroup.themes.map(theme => buildTheme(theme, baseGroup.isLight)),
+    themes: baseGroup.themes.map(theme =>
+      buildTheme(theme, theme.isLight ?? baseGroup.isLight),
+    ),
   };
 }
 
@@ -326,18 +328,22 @@ function ensureCustomThemesLoaded(): void {
   _customThemesLoaded = true;
 
   const themeMap = getThemeMap();
+  const builtInThemeIds = new Set(themeMap.keys());
+  const isBuiltInThemeId = (id: string) => builtInThemeIds.has(id);
 
   // --- Custom color themes (from useCustomThemeStore) ---
   useCustomThemeStore
     .getState()
-    .themes.forEach(theme =>
-      themeMap.set(theme.id, buildThemeFromTemplate(theme)),
-    );
+    .themes.forEach(theme => {
+      if (isBuiltInThemeId(theme.id)) return;
+      themeMap.set(theme.id, buildThemeFromTemplate(theme));
+    });
 
   useCustomThemeStore.subscribe(state => {
-    state.themes.forEach(theme =>
-      themeMap.set(theme.id, buildThemeFromTemplate(theme)),
-    );
+    state.themes.forEach(theme => {
+      if (isBuiltInThemeId(theme.id)) return;
+      themeMap.set(theme.id, buildThemeFromTemplate(theme));
+    });
     _themeMap = null;
   });
 
