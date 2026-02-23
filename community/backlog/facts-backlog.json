@@ -843,12 +843,12 @@
     "id": 141,
     "fact": "The word 'okage-sama de' (おかげさまで) means 'thanks to you' but implies gratitude to unseen forces and luck too.",
     "issued": false,
-    "completed": false
+    "completed": true
   },
   {
     "id": 142,
     "fact": "Japan has 'chindonya' - walking advertisements with musicians who dress colorfully and parade through streets promoting businesses.",
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
