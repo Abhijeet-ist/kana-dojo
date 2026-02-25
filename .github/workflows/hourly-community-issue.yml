@@ -1163,6 +1163,23 @@ jobs:
               }
             }
 
+            const backlogFileMap = {
+              theme: themeBacklogPath,
+              fact: factsBacklogPath,
+              proverb: proverbsBacklogPath,
+              haiku: haikuBacklogPath,
+              trivia: triviaBacklogPath,
+              grammar: grammarBacklogPath,
+              animeQuote: animeQuotesBacklogPath,
+              idiom: idiomsBacklogPath,
+              regionalDialect: regionalDialectsBacklogPath,
+              falseFriend: falseFriendsBacklogPath,
+              culturalEtiquette: culturalEtiquetteBacklogPath,
+              exampleSentence: exampleSentencesBacklogPath,
+              commonMistake: commonMistakesBacklogPath,
+              videoGameQuote: videoGameQuotesBacklogPath,
+            };
+
             if (!selectedType) {
               console.log('No available items found across all community backlogs.');
               state.lastRun = new Date().toISOString();
@@ -1189,6 +1206,7 @@ jobs:
               core.setOutput('reason', 'dry_run');
               core.setOutput('selected_type', selectedType);
               core.setOutput('should_commit', backlogChanged ? 'true' : 'false');
+              core.setOutput('backlog_file', backlogFileMap[selectedType] || 'community/backlog/');
               core.setOutput('notify_discord', 'false');
               return;
             }
@@ -1258,6 +1276,7 @@ jobs:
             core.setOutput('consecutive_no_issue_runs', String(state.consecutiveNoIssueRuns));
             core.setOutput('should_commit', 'true');
             core.setOutput('notify_discord', 'false');
+            core.setOutput('backlog_file', backlogFileMap[selectedType] || 'community/backlog/');
 
       - name: Apply labels, reactions, and welcome comment
         if: steps.create-issue.outputs.issue_created == 'true'
@@ -1325,7 +1344,7 @@ jobs:
         with:
           token: ${{ secrets.AUTOMATION_PR_TOKEN }}
           add-paths: |
-            community/backlog/
+            ${{ steps.create-issue.outputs.backlog_file }}
           commit-message: 'chore(automation): mark item as issued'
           branch: automation/community-data/hourly-${{ github.run_id }}
           title: 'chore(automation): update community backlog'
